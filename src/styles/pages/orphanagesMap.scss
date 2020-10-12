@@ -1,0 +1,71 @@
+#page-map {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+
+    aside {
+        width: 440px;
+        background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);;
+        padding: 8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        header {
+    
+            h2 {
+                font-size: 4rem;
+                font-weight: 800;
+                line-height: 4.2rem;
+                margin-top: 6.4rem;
+            }
+    
+            p {
+                line-height: 2.8rem;
+                margin-top: 2.4rem;
+            }
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            line-height: 2.4rem;
+
+            strong {
+                font-weight: 800;
+            }
+        }
+    }
+
+    .leaflet-container {
+        z-index: 1;
+    }
+
+    .create-orphanage {
+        position: absolute;
+        right: 4rem;
+        bottom: 4rem;
+        width: 6.4rem;
+        height: 6.4rem;
+        background-color: #15c3d6;
+        border-radius: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color .2s;
+        z-index: 2;
+
+        svg {
+            transition: transform .2s;
+        }
+
+        &:hover {
+            background-color: #17d6eb;
+
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
