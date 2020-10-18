@@ -7,7 +7,7 @@ import mapIconOptions from '../utils/mapIconOptions'
 import {LeafletMouseEvent} from 'leaflet'
 import api from "../services/api";
 
-import '../styles/pages/create-orphanage.css';
+import '../styles/pages/create-orphanage.scss';
 
 export default () => {
   const history = useHistory()
