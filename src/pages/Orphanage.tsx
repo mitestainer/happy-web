@@ -7,7 +7,7 @@ import { Map, Marker, TileLayer } from "react-leaflet";
 import mapIconOptions from '../utils/mapIconOptions'
 import api from "../services/api";
 
-import '../styles/pages/orphanage.css';
+import '../styles/pages/orphanage.scss';
 
 interface Orphanage {
   id: number
