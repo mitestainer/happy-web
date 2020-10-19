@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {FiPlus, FiArrowRight} from 'react-icons/fi'
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet'
 import mapIconOptions from '../utils/mapIconOptions'
 import api from '../services/api'
+import LocationContext from '../contexts/LocationContext'
 
 import mapMarkerImg from '../images/map-marker.svg'
 
@@ -18,6 +19,7 @@ interface Orphanage {
 
 export default () => {
     const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+    const {lat, lon, city, state} = useContext(LocationContext)
 
     useEffect(() => {
         api.get('/orphanages').then(res => {
@@ -34,12 +36,12 @@ export default () => {
                     <p>Muitas crianças estão esperando a sua visita :)</p>
                 </header>
                 <footer>
-                    <strong>Cidade</strong>
-                    <p>Estado</p>
+                    <strong>{city}</strong>
+                    <p>{state}</p>
                 </footer>
             </aside>
             <Map
-                center={[-23.5515193939209, -46.633140563964844]}
+                center={[lat, lon]}
                 zoom={15}
                 style={{width: '100%', height: '100%'}}
             >

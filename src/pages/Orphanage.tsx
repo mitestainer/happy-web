@@ -47,7 +47,7 @@ export default () => {
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[activeImgIndex].url} alt={orphanage.name} />
+          {orphanage.images[activeImgIndex] && <img src={orphanage.images[activeImgIndex].url} alt={orphanage.name} />}
 
           <div className="images">
             {orphanage.images.map((img, index) => {

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, ChangeEvent } from "react";
+import React, { FormEvent, useState, ChangeEvent, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { Map, Marker, TileLayer } from 'react-leaflet';
@@ -6,11 +6,14 @@ import { FiPlus } from "react-icons/fi";
 import mapIconOptions from '../utils/mapIconOptions'
 import {LeafletMouseEvent} from 'leaflet'
 import api from "../services/api";
+import LocationContext from '../contexts/LocationContext'
 
 import '../styles/pages/create-orphanage.scss';
 
 export default () => {
   const history = useHistory()
+
+  const {lat, lon} = useContext(LocationContext)
   
   const [position, setPosition] = useState({latitude: 0, longitude: 0})
   const [name, setname] = useState('')
@@ -66,7 +69,7 @@ export default () => {
             <legend>Dados</legend>
 
             <Map 
-              center={[-23.5515193939209, -46.633140563964844]}
+              center={[lat, lon]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onclick={handleMapClick}
