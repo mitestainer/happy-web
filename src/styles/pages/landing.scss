@@ -44,8 +44,19 @@
             flex-direction: column;
             text-align: right;
 
-            strong {
-                font-weight: 800;
+            span:nth-child(1) {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                svg {
+                    animation: spin 2s linear infinite;
+                }
+                
+                strong {
+                    margin-left: 1rem;
+                    font-weight: 800;
+                }
             }
         }
 
@@ -83,4 +94,9 @@
     100% {
         transform: translateX(0);
     }
+}
+
+@keyframes spin {
+    from {transform: rotate(0);}
+    to {transform: rotate(360deg);}
 }
