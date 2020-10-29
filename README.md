@@ -6,4 +6,12 @@
 
 Este é o repositório do webapp React. Os demais repos desse projeto são o do [servidor](https://github.com/mitestainer/happy-server) e do [app mobile](https://github.com/mitestainer/happy-mobile).
 
-Para visualizar o projeto, execute o comando `npm start`.
+Para visualizar o projeto, acesse https://happy-react-app-web.herokuapp.com.
+
+__Conceitos estudados neste projeto:__
+
+- Geolocalização
+- Utilização de API de mapas
+- React Hooks, Router e Context API
+
+> A feature de upload de imagens não funciona no Heroku porque é necessário um serviço de armazenamento de arquivos, como Amazon S3. e como não há nenhum gratuito eu resolvi não implementar.
