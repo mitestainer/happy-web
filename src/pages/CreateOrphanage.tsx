@@ -65,8 +65,6 @@ export default () => {
       
       await api.post('/orphanages', data)
   
-      // setLoading(false)
-  
       alert('Cadastro realizado com sucesso!')
   
       history.push('/app')
