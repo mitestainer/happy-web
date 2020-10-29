@@ -6,4 +6,4 @@
 
 Este é o repositório do webapp React. Os demais repos desse projeto são o do [servidor](https://github.com/mitestainer/happy-server) e do [app mobile](https://github.com/mitestainer/happy-mobile).
 
-Para visualizar o projeto, execute o comando `npm start`.
+Para visualizar o projeto, acesse [](https://happy-react-app-web.herokuapp.com).
