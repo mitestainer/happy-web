@@ -24,6 +24,8 @@ export default () => {
   const [images, setImages] = useState<File[]>([])
   const [previewImages, setPreviewImages] = useState<string[]>([])
 
+  const [loading, setLoading] = useState(false)
+
   const handleMapClick = (e: LeafletMouseEvent) => {
     const {lat, lng} = e.latlng
     setPosition({latitude: lat, longitude: lng})
@@ -41,22 +43,34 @@ export default () => {
     e.preventDefault()
 
     const {latitude, longitude} = position
-
-    const data = new FormData()
-    data.append('name', name)
-    data.append('about', about)
-    data.append('latitude', String(latitude))
-    data.append('longitude', String(longitude))
-    data.append('instructions', instructions)
-    data.append('opening_hours', openingHours)
-    data.append('open_on_weekends', String(openOnWeekends))
-    images.forEach(img => data.append('images', img))
     
-    await api.post('/orphanages', data)
+    const values = [name, about, latitude, longitude, instructions, openingHours]
+    
+    const isAnyValueMissing = values.some(item => (typeof item === 'string' && !item.length) || (typeof item === 'number' && item === 0))
+    
+    if (isAnyValueMissing) {
+      alert('Preencha os campos obrigatórios')
+    } else {
+      setLoading(true)
 
-    alert('Cadastro realizado com sucesso!')
-
-    history.push('/app')
+      const data = new FormData()
+      data.append('name', name)
+      data.append('about', about)
+      data.append('latitude', String(latitude))
+      data.append('longitude', String(longitude))
+      data.append('instructions', instructions)
+      data.append('opening_hours', openingHours)
+      data.append('open_on_weekends', String(openOnWeekends))
+      images.forEach(img => data.append('images', img))
+      
+      await api.post('/orphanages', data)
+  
+      // setLoading(false)
+  
+      alert('Cadastro realizado com sucesso!')
+  
+      history.push('/app')
+    }
   }
 
     return (
@@ -131,8 +145,8 @@ export default () => {
             </div>
           </fieldset>
 
-          <button className="confirm-button" type="submit">
-            Confirmar
+          <button className="confirm-button" type="submit" disabled={loading}>
+            {loading ? 'Aguarde...' : 'Confirmar'}
           </button>
         </form>
       </main>

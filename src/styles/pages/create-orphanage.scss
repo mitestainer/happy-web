@@ -160,6 +160,12 @@
                 align-items: center;
             
                 transition: background-color 0.2s;
+
+                &:disabled, &:disabled:hover {
+                    background-color: #F5F8FA;
+                    color: #C4C3C3;
+                    cursor: not-allowed;
+                }
                 
                 svg {
                     margin-right: 16px;
